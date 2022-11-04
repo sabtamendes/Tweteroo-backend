@@ -56,10 +56,18 @@ app.get("/tweets", (req, res) => {
         t.avatar = avatar;
     });
 
-    const lastTenTweets = tweets.slice(-10);
+    const lastTenTweets = tweets.slice(tweets.length - 10);
 
     res.send(lastTenTweets);
 });
 
+app.get("/tweets/:username", (req, res) => {
+
+    const nameUser = req.params.username;
+
+    const allTweetsUser = tweets.filter((i) => i.username === nameUser)
+
+    res.send(allTweetsUser)
+})
 
 app.listen(5000);
