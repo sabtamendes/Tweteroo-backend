@@ -42,5 +42,18 @@ app.post("/tweets", (req, res) => {
 });
 
 
+app.get("/tweets", (req, res) => {
+
+    tweets.forEach((t) => {
+
+        const { avatar } = user.find((item) => item.username === t.username);
+
+        t.avatar = avatar;
+    });
+
+    const lastTenTweets = tweets.slice(-10);
+
+    res.send(lastTenTweets);
+});
 
 app.listen(5000);
