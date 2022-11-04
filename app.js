@@ -17,7 +17,8 @@ app.post("/sign-up", (req, res) => {
         return;
     }
 
-    const data = {
+    const data =
+    {
         username,
         avatar
     }
@@ -35,8 +36,12 @@ app.post("/tweets", (req, res) => {
         res.status(400).send("Insira todos os campos");
         return;
     }
-
-    tweets.push({ username, tweet });
+    const data =
+    {
+        username,
+        tweet
+    }
+    tweets.push(data);
 
     res.status(201).send("OK");
 });
@@ -46,7 +51,7 @@ app.get("/tweets", (req, res) => {
 
     tweets.forEach((t) => {
 
-        const { avatar } = user.find((item) => item.username === t.username);
+        const { avatar } = user.find((i) => i.username === t.username);
 
         t.avatar = avatar;
     });
@@ -55,5 +60,6 @@ app.get("/tweets", (req, res) => {
 
     res.send(lastTenTweets);
 });
+
 
 app.listen(5000);
