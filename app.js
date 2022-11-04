@@ -12,7 +12,7 @@ app.post("/sign-up", (req, res) => {
 
     const { username, avatar } = req.body;
 
-    if(!username || !avatar){
+    if (!username || !avatar) {
         res.status(400).send("Insira todos os campos!");
         return;
     }
@@ -25,6 +25,22 @@ app.post("/sign-up", (req, res) => {
 
     res.status(201).send("OK");
 });
+
+app.post("/tweets", (req, res) => {
+
+    const { user: username } = req.headers;
+    const { tweet } = req.body;
+
+    if (!username || !tweet) {
+        res.status(400).send("Insira todos os campos");
+        return;
+    }
+
+    tweets.push({ username, tweet });
+
+    res.status(201).send("OK");
+});
+
 
 
 app.listen(5000);
