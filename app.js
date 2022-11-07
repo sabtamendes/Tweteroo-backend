@@ -42,7 +42,6 @@ app.post("/tweets", (req, res) => {
         tweet
     }
     tweets.push(data);
-
     res.status(201).send("OK");
 });
 
@@ -57,7 +56,6 @@ app.get("/tweets", (req, res) => {
     });
 
     const lastTenTweets = tweets.slice(tweets.length - 10);
-
     res.send(lastTenTweets);
 });
 
@@ -66,7 +64,6 @@ app.get("/tweets/:username", (req, res) => {
     const nameUser = req.params.username;
 
     const allTweetsUser = tweets.filter((i) => i.username === nameUser)
-
     res.send(allTweetsUser)
 })
 
