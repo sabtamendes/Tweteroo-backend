@@ -13,7 +13,7 @@ app.post("/sign-up", (req, res) => {
     const { username, avatar } = req.body;
 
     if (!username || !avatar) {
-        res.status(400).send("Insira todos os campos!");
+        res.status(400).send({ message: "Insira todos os campos corretamente!" });
         return;
     }
 
@@ -33,7 +33,7 @@ app.post("/tweets", (req, res) => {
     const { tweet } = req.body;
 
     if (!username || !tweet) {
-        res.status(400).send("Insira todos os campos");
+        res.status(400).send({ message: "Insira todos os campos corretamente!" });
         return;
     }
     const data =
